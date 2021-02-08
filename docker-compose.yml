@@ -54,6 +54,19 @@ services:
     networks:
       - app-network
 
+# phpmyadmin service
+  phpmyadmin:
+    image: 'phpmyadmin/phpmyadmin'
+    restart: always
+    ports:
+       - '8080:80'
+    links:
+        - db:db
+    environment:
+        MYSQL_USERNAME: root
+        MYSQL_ROOT_PASSWORD: naseeb9078
+        PMA_HOST: db
+
 #Docker Networks
 networks:
   app-network:
