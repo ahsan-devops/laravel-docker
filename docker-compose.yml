@@ -57,15 +57,18 @@ services:
 # phpmyadmin service
   phpmyadmin:
     image: 'phpmyadmin/phpmyadmin'
+    container_name: phpmyadmin
     restart: always
     ports:
        - '8080:80'
-    links:
-        - db:db
+    depends_on:   
+        - db
     environment:
         MYSQL_USERNAME: root
         MYSQL_ROOT_PASSWORD: naseeb9078
         PMA_HOST: db
+    networks:
+       - app-network        
 
 #Docker Networks
 networks:
